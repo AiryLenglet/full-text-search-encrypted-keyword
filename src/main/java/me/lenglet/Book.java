@@ -11,19 +11,31 @@ public class Book {
 
     private Set<String> keywords;
 
-    public void computeKeywords() {
+    public Book(
+            String isbn,
+            String author,
+            String title
+    ) {
+        this.isbn = isbn;
+        this.author = author;
+        this.title = title;
         this.keywords = new HashSet<>();
-        this.keywords.addAll(computeAllSubstring(this.author));
-        this.keywords.addAll(computeAllSubstring(this.title));
     }
 
-    private Set<String> computeAllSubstring(String string) {
-        final var result = new HashSet<String>();
-        for (int i = 0; i < string.length(); i++) {
-            for (int j = 1; j <= string.length() - i; j++) {
-                result.add(string.substring(i, j + i));
-            }
-        }
-        return result;
+    public String getAuthor() {
+        return author;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Set<String> getKeywords() {
+        return keywords;
+    }
+
+    public void addKeyword(String keyword) {
+        this.keywords.add(keyword);
+    }
+
 }
